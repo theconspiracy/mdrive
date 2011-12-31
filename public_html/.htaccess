@@ -1,0 +1,21 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|external|cdn|api|services|youtube|soundmanager|sdk|Radical_PHP|swf|images|robots\.txt|css|js|includes|media|ckeditor|favicon\.ico|ad_media|resources|test|sdk|canavss|media)
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# -FrontPage-
+
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthName radicalflow.com
+AuthUserFile /home/radicalf/public_html/_vti_pvt/service.pwd
+AuthGroupFile /home/radicalf/public_html/_vti_pvt/service.grp
+Options -Indexes
