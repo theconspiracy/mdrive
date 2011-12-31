@@ -6,7 +6,7 @@ DL = {
 	
 	api:function(formId,method,params)
 	{
-		//alert(params.confirmAction);
+		//alert(formId);
 		var defaults = {
 			confirmAction:false,
 			confirmText:'You Sure'
@@ -33,7 +33,7 @@ DL = {
 			var form = $("#"+formId);
 			$(':input', form).each(function(index) 
 			{
-    			if($(this).attr('type') == 'text')
+    			if($(this).attr('type') != 'button' )
     			{
     				$(this).val('');
     			}

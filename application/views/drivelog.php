@@ -103,7 +103,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete"  onClick="javascript:$.api('capacity_delete_form','deleteCapacity',{cofirmAction:true}));"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete"  onClick="javascript:$.api('capacity_delete_form','deleteCapacity',{cofirmAction:true});"/></td>
 											</tr>
 										</table>
 										</form>
@@ -131,7 +131,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser',{cofirmAction:true}));"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser',{cofirmAction:true});"/></td>
 											</tr>
 										</table>
 										</form>
@@ -258,120 +258,12 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				</tr>
 				<tr>
 					<td class="dsR147">
-						<div align="center"> <input class="dsR10" type="text" name="searchTextField" size="100" /> <input type="submit" name="submitButtonName" value="Search" /></div>
+						<div align="center"><form id="search_form" method="post"><input class="dsR10" type="text" name="search_term" size="100" /> <input type="button" name="submitButtonName" value="Search"  onClick="javascript:$.api('search_form','search');" /></form></div>
 					</td>
 				</tr>
 				<tr>
 					<td class="dsR28">
-						<div align="center">
-							<table class="dsR54" border="0" cellspacing="2" cellpadding="0">
-								<tr>
-									<td class="dsR28">Name</td>
-									<td class="dsR28">Contents</td>
-									<td class="dsR121">Jobs</td>
-									<td class="dsR20">Brand</td>
-									<td class="dsR28">Capacity</td>
-									<td class="dsR28">Free Space</td>
-									<td class="dsR28">User</td>
-									<td class="dsR28">Free</td>
-									<td class="dsR28">Update</td>
-									<td class="dsR28">Delete</td>
-								</tr>
-								<tr>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR121">
-										<hr />
-									</td>
-									<td class="dsR20">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-									<td class="dsR28">
-										<hr />
-									</td>
-								</tr>
-								<tr>
-									<td class="dsR28"><input class="dsR77" type="text" name="nameField" value="GR100" size="8" maxlength="5" /></td>
-									<td class="dsR28"><textarea class="dsR75" name="contentsTextArea" rows="2" cols="50">Bath And Body Works &quot;Into The Wild&quot;, VS &quot;Clean Fresh&quot;, VS &quot;What The More&quot;</textarea></td>
-									<td class="dsR121"><input class="dsR122" type="text" name="jobsField" value="MD1234, MD2548" size="24" /></td>
-									<td class="dsR20"><select name="brandPulldown" size="1">
-											<option value="GDrive">GRaid</option>
-											<option value="GDrive">GDrive</option>
-											<option value="Lacie-Rugged">Lacie Rugged</option>
-										</select></td>
-									<td class="dsR28"><select class="dsR54" name="capacityPulldown" size="1">
-											<option value="500-GB">500 GB</option>
-											<option value="1-TB">1 TB</option>
-											<option value="2-TB">2 TB</option>
-											<option value="3-TB">3 TB</option>
-											<option value="4-TB">4 TB</option>
-										</select></td>
-									<td class="dsR28"><input class="dsR77" type="text" name="freespaceField" value="500 GB" size="8" maxlength="8" /></td>
-									<td class="dsR28"><select name="userPulldown" size="1">
-											<option value="Bullpen">Bullpen</option>
-											<option value="Garrett-Tezanos">Garrett Tezanos</option>
-											<option value="Paul-La-Calandra">Paul La Calandra</option>
-											<option value="Vault">Vault</option>
-											<option value="Vincent-Garguilo">Vincent Garguilo</option>
-										</select></td>
-									<td class="dsR28"><select name="freePulldown" size="1">
-											<option value="Yes">Yes</option>
-											<option selected="selected" value="No">No</option>
-										</select></td>
-									<td class="dsR28"><input type="submit" name="submitButtonName" value="Update" /></td>
-									<td class="dsR28"><input type="submit" name="submitButtonName" value="Delete" /></td>
-								</tr>
-								<tr>
-									<td class="dsR28"><input class="dsR77" type="text" name="nameField" value="GR299" size="8" maxlength="5" /></td>
-									<td class="dsR28"><textarea class="dsR75" name="contentsTextArea" rows="2" cols="50">Victoria's Secret &quot;You Go Girl&quot;</textarea></td>
-									<td class="dsR121"><input class="dsR122" type="text" name="jobsField" value="MD1234, MD2548" size="24" /></td>
-									<td class="dsR20"><select name="brandPulldown" size="1">
-											<option value="GDrive">GRaid</option>
-											<option value="GDrive">GDrive</option>
-											<option value="Lacie-Rugged">Lacie Rugged</option>
-										</select></td>
-									<td class="dsR28"><select class="dsR54" name="capacityPulldown" size="1">
-											<option value="500-GB">500 GB</option>
-											<option value="1-TB">1 TB</option>
-											<option value="2-TB">2 TB</option>
-											<option value="3-TB">3 TB</option>
-											<option value="4-TB">4 TB</option>
-										</select></td>
-									<td class="dsR28"><input class="dsR77" type="text" name="freespaceField" value="500 GB" size="8" maxlength="8" /></td>
-									<td class="dsR28"><select name="userPulldown" size="1">
-											<option value="Bullpen">Bullpen</option>
-											<option value="Garrett-Tezanos">Garrett Tezanos</option>
-											<option value="Paul-La-Calandra">Paul La Calandra</option>
-											<option value="Vault">Vault</option>
-											<option value="Vincent-Garguilo">Vincent Garguilo</option>
-										</select></td>
-									<td class="dsR28"><select name="freePulldown" size="1">
-											<option value="Yes">Yes</option>
-											<option selected="selected" value="No">No</option>
-										</select></td>
-									<td class="dsR28"><input type="submit" name="submitButtonName" value="Update" /></td>
-									<td class="dsR28"><input type="submit" name="submitButtonName" value="Delete" /></td>
-								</tr>
-							</table>
+						<div align="center" id="search_results">
 						</div>
 					</td>
 				</tr>
@@ -413,6 +305,20 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 						$("#panel").css("left","-4000px");
 						$(".users").html(data);
 					});
+				}
+				
+				if(method=='search')
+				{
+					if(msg.results.length >0)
+					{
+						$("#search_results").html(msg.results[0]);
+						$("#panel").css("left","-4000px");
+					}
+				}
+				if(method=='drives')
+				{
+					$("#panel").css("left","-4000px");
+					$("#"+msg.drive).remove();
 				}
 			}
 		</script>

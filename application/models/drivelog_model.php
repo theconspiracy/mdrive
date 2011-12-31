@@ -93,7 +93,13 @@ class Drivelog_model extends CI_Model {
 	
 	public function search($searchTerm)
 	{
+		$SQL = 'SELECT * '
+		.' FROM drives '
+		.' WHERE contents LIKE \'%'.$searchTerm.'%\' '
+		.' || jobs LIKE \'%'.$searchTerm.'%\' ';
 		
+		$query = $this->db->query($SQL);
+		return $query->result();
 	}
 }	
 ?>
