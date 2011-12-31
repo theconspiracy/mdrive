@@ -320,6 +320,11 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 					$("#panel").css("left","-4000px");
 					$("#"+msg.drive).remove();
 				}
+				if(method=='drive_modified')
+				{
+					$("#panel").css("left","-4000px");
+					//$("#"+msg.drive).remove();
+				}
 			}
 		</script>
 	</body>

@@ -81,7 +81,7 @@ class Drivelog_model extends CI_Model {
 	
 	public function modifyDrive($data)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $data['id']);
 		$this->db->update('drives', $data); 
 	}
 	

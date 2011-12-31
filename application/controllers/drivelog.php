@@ -76,9 +76,9 @@ class Drivelog extends CI_Controller {
 	public function modifyDrive()
 	{
 		$data = $_POST;
-		unset($data['add']);
+		unset($data['Update']);
 		$this->drivelog->modifyDrive($data);
-		echo '{"method":"brands"}';
+		echo '{"method":"drive_modified"}';
 	}
 	
 	public function deleteDrive()
@@ -187,7 +187,7 @@ class Drivelog extends CI_Controller {
 				}				
 				
 				$template .= '						</select></td>
-									<td class="dsR28"><input class="dsR77" type="text" name="freespace" value="'.$value->free_space.'" size="8" maxlength="8" /></td>
+									<td class="dsR28"><input class="dsR77" type="text" name="free_space" value="'.$value->free_space.'" size="8" maxlength="8" /></td>
 									<td class="dsR28"><select name="user_id" size="1" class="users">';
 			
 				$users = $this->drivelog->users();	
@@ -217,7 +217,7 @@ class Drivelog extends CI_Controller {
 											<option '.$free.' value="No">No</option>
 										</select></td>
 										
-									<td class="dsR28"><input type="button" name="submitButtonName" value="Update" onClick="javascript:$.api(\'drive_'.$value->id.'\',\'updateDrive\');"/></td>
+									<td class="dsR28"><input type="button" name="Update" value="Update" onClick="javascript:$.api(\'drive_'.$value->id.'\',\'modifyDrive\');"/></td>
 									<td class="dsR28"><input type="button" name="submitButtonName" value="Delete"  onClick="javascript:$.api(\'drive_'.$value->id.'\',\'deleteDrive\',{cofirmAction:true});"/></td>
 								</tr><input type="hidden" name="id" value="'.$value->id.'"></form>';
 			}
