@@ -1,39 +1,59 @@
 DL = {
 	
 	apiUrl: "/drivelog",
+	
 	//BRANDS
 	
-	api:function(formId,method)
+	api:function(formId,method,params)
 	{
-		//CALLBACK TO VIEW
-		onBegin();
+		//alert(params.confirmAction);
+		var defaults = {
+			confirmAction:false,
+			confirmText:'You Sure'
+		};
 		
-		//store serialized data
-		var theData = $("#"+formId).serialize();
+		var options = $.extend(defaults,params);
 		
-		//clear form
-		var form = $("#"+formId);
-		$(':input', form).each(function(index) 
+		if(options.confirmAction == true)
 		{
-    		if($(this).attr('type') == 'text')
-    		{
-    			$(this).val('');
-    		}
-		});
+			conf = confirm(options.confirmText);	
+		} else {
+			conf = true;
+		}
 		
-		//HANDLE AJAX CALL
-		$.ajax({
-  			url: this.apiUrl+'/'+method,
-  			data: theData,
-  			dataType:"json",
-  			type:"POST",
-  			success: function(msg){
-  				//callback send msg/data
-  				onComplete(msg);
-  			}
-		});
+		if(conf)
+		{
+			//CALLBACK TO VIEW
+			onBegin();
+		
+			//store serialized data
+			var theData = $("#"+formId).serialize();
+			
+			//clear form
+			var form = $("#"+formId);
+			$(':input', form).each(function(index) 
+			{
+    			if($(this).attr('type') == 'text')
+    			{
+    				$(this).val('');
+    			}
+			});
+		
+			//HANDLE AJAX CALL
+			$.ajax({
+  				url: this.apiUrl+'/'+method,
+  				data: theData,
+  				dataType:"json",
+  				type:"POST",
+  				success: function(msg){
+  					//callback send msg/data
+  					onComplete(msg);
+  				}
+			});
+		}
 	}
 }
+
 
 
 

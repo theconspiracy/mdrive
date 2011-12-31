@@ -75,7 +75,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 												</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('brand_delete_form','deleteBrand');" /></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('brand_delete_form','deleteBrand',{confirmAction:true});" /></td>
 											</tr>
 										</table>
 										</form>
@@ -103,7 +103,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete"  onClick="javascript:$.api('capacity_delete_form','deleteCapacity');"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete"  onClick="javascript:$.api('capacity_delete_form','deleteCapacity',{cofirmAction:true}));"/></td>
 											</tr>
 										</table>
 										</form>
@@ -131,7 +131,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser');"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser',{cofirmAction:true}));"/></td>
 											</tr>
 										</table>
 										</form>
@@ -379,9 +379,9 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 		</div>
 		<p></p>
 		<script>
+
 			//EXTEND JQUERY WITH DL OBJECT
 			$.extend(DL);
-			
 			//CALL BACK METHODS DL API
 			function onBegin()
 			{
