@@ -54,6 +54,7 @@ DL = {
 	}
 }
 
-
+//EXTEND JQUERY WITH DL OBJECT
+$.extend(DL);
 
 

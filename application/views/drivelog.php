@@ -380,8 +380,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 		<p></p>
 		<script>
 
-			//EXTEND JQUERY WITH DL OBJECT
-			$.extend(DL);
+			
 			//CALL BACK METHODS DL API
 			function onBegin()
 			{
