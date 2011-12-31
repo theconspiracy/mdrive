@@ -69,6 +69,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 												<td class="dsR109">
 													<div class="brands">
 														<select name="brand_id" size="1">
+														<option value="choose">Choose</option>
 													<?php foreach($brands as $key =>$value): ?>
 														<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
 													<?php endforeach; ?>
@@ -97,6 +98,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 												<td class="dsR109">
 													<div class="capacity">
 													<select class="dsR54" name="capacity_id" size="1">
+														<option value="choose">Choose</option>
 														<?php foreach($capacity as $key =>$value): ?>
 															<option value="<?php echo $value->id;?>"><?php echo $value->amount;?></option>
 														<?php endforeach; ?>
@@ -125,13 +127,14 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 												<td class="dsR109" id="users">
 													<div class="users">
 													<select name="user_id" size="1">
-														<?php foreach($users as $key =>$value): ?>
+														<option value="choose">Choose</option>
+														<?php foreach($users as $key =>$value): if($value->name!='limbo'): ?>
 															<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
-														<?php endforeach; ?>
+														<?php endif; endforeach; ?>
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser',{cofirmAction:true});"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser',{customMethod:userLimbo()});"/></td>
 											</tr>
 										</table>
 										</form>
@@ -208,6 +211,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 								<td class="dsR20">
 									<div class="brands">
 									<select name="brand_id" size="1">
+										<option value="choose">Choose</option>
 										<?php foreach($brands as $key =>$value): ?>
 											<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
 										<?php endforeach; ?>
@@ -217,6 +221,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 								<td class="dsR28">
 									<div class="capacity">
 									<select class="dsR54" name="capacity_id" size="1">
+										<option value="choose">Choose</option>
 										<?php foreach($capacity as $key =>$value): ?>
 											<option value="<?php echo $value->id;?>"><?php echo $value->amount;?></option>
 										<?php endforeach; ?>
@@ -227,17 +232,19 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 								<td class="dsR28">
 									<div class="users">
 									<select name="user_id" size="1">
-										<?php foreach($users as $key =>$value): ?>
+										<option value="choose">Choose</option>
+										<?php foreach($users as $key =>$value): if($value->name!='limbo'): ?>
 											<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
-										<?php endforeach; ?>
+										<?php endif; endforeach; ?>
 									</select>
 									</div>
 									</td>
 								<td class="dsR28"><select name="free" size="1">
+										<option value="choose">Choose</option>
 										<option value="1">Yes</option>
 										<option selected="selected" value="0">No</option>
 									</select></td>
-								<td class="dsR28"><input type="button" name="add" value="Add" onClick="javascript:$.api('drive_form','addDrive');"/></td>
+								<td class="dsR28"><input type="button" name="add" value="Add" onClick="javascript:$.api('drive_form','addDrive',{requireAllFields:true});"/></td>
 								<td class="dsR28"></td>
 							</tr>
 						</table>
@@ -324,6 +331,16 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				{
 					$("#panel").css("left","-4000px");
 					//$("#"+msg.drive).remove();
+				}
+			}
+			
+			function userLimbo(formId,method)
+			{
+				var conf = confirm('Would you lioke this user\'s drives to go into limbo?');
+				if(conf){
+					$.api(formId,'userLimbo');
+				} else{
+					$.api(formId,'deleteUser');
 				}
 			}
 		</script>

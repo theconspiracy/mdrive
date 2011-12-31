@@ -48,6 +48,13 @@ class Drivelog extends CI_Controller {
 		echo '{"method":"users"}';
 	}
 	
+	public function userLimbo()
+	{
+		$data = $_POST;
+		$this->drivelog->userLimbo($data['user_id']);
+		echo '{"method":"users"}';
+	}
+	
 	
 	public function addCapacity()
 	{
@@ -231,6 +238,7 @@ class Drivelog extends CI_Controller {
 		
 		$brands =  $this->drivelog->brands();
 		$html = '<select name="brand_id" size="1">';
+		$html .= '<option value="choose">Choose</option>';
 		foreach($brands as $key =>$value)
 		
 		{
@@ -245,6 +253,7 @@ class Drivelog extends CI_Controller {
 		
 		$capacity =  $this->drivelog->capacity();
 		$html = '<select name="capacity_id" size="1">';
+		$html .= '<option value="choose">Choose</option>';
 		foreach($capacity as $key =>$value)
 		
 		{
@@ -259,10 +268,13 @@ class Drivelog extends CI_Controller {
 		
 		$users =  $this->drivelog->users();
 		$html = '<select name="user_id" size="1">';
+		$html .= '<option value="choose">Choose</option>';
 		foreach($users as $key =>$value)
-		
 		{
-			$html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+			if($value->name != 'limbo')
+			{
+				$html .= '<option value="'.$value->id.'">'.$value->name.'</option>';	
+			}
 		} 
 		
 		$html .= '<select>';

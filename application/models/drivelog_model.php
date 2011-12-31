@@ -62,6 +62,16 @@ class Drivelog_model extends CI_Model {
 	}
 	
 	
+	public function userLimbo($id)
+	{
+		$SQL = 'UPDATE users '
+		.' SET user_id=\'14\' '
+		.' WHERE id=\''.$id.'\' ';
+		
+		$query = $this->db->query($SQL);
+	}
+	
+	
 	public function addCapacity($data)
 	{
 		$this->db->insert('capacity', $data);

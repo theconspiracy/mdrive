@@ -1,18 +1,46 @@
 DL = {
 	
-	apiUrl: "/drivelog",
-	
-	//BRANDS
-	
 	api:function(formId,method,params)
 	{
-		//alert(formId);
+		var form = $("#"+formId);
+		
 		var defaults = {
 			confirmAction:false,
-			confirmText:'You Sure'
+			confirmText:'You Sure',
+			requireAllFields:false,
+			validateFields:[],
+			customMethod:false,
+			apiUrl:"/drivelog"
 		};
 		
 		var options = $.extend(defaults,params);
+		
+		
+		var valid = true;
+		//DO WE NNED TO VALIDATE FIELDS
+		if(options.requireAllFields == true)
+		{
+			$(':input', form).each(function(index) 
+			{
+    			if($(this).val() == '' )
+    			{
+    				//alert($(this).attr('name'));
+    				valid = false;
+    			}
+			});
+		}
+		
+		
+		if(!valid)
+		{
+			alert('You must complete all form fields');
+		}
+		
+		if(options.customMethod)
+		{
+			options.customMethod.call(formId,method);
+			valid = false;
+		}
 		
 		if(options.confirmAction == true)
 		{
@@ -21,7 +49,7 @@ DL = {
 			conf = true;
 		}
 		
-		if(conf)
+		if(conf && valid)
 		{
 			//CALLBACK TO VIEW
 			onBegin();
@@ -30,7 +58,6 @@ DL = {
 			var theData = $("#"+formId).serialize();
 			
 			//clear form
-			var form = $("#"+formId);
 			$(':input', form).each(function(index) 
 			{
     			if($(this).attr('type') != 'button' )
@@ -41,7 +68,7 @@ DL = {
 		
 			//HANDLE AJAX CALL
 			$.ajax({
-  				url: this.apiUrl+'/'+method,
+  				url: options.apiUrl+'/'+method,
   				data: theData,
   				dataType:"json",
   				type:"POST",
