@@ -10,8 +10,9 @@
 		<meta name="description" content="The Drive Log of Moondog Edit. For Internal Eyes Only." />
 		<link href="css/agl-styles.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="css/basic.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/con5_api.css" rel="stylesheet" type="text/css" media="all" />
 		<script src="js/jquery.js"></script>
-		<script src="js/drivelog.js"></script>
+		<script src="js/con5_api.js"></script>
 		<style type="text/css" media="all"><!--
 body { background-color: #fff; background-image: url(media/background.jpg); margin: 20px 0; }
 .dsR10 /*agl rulekind: base;*/ { width: 617px; height: auto; }
@@ -32,7 +33,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 .dsR145 /*agl rulekind: base;*/ { width: auto; height: 140px; vertical-align: middle; }
 .dsR147 /*agl rulekind: base;*/ { width: auto; height: 60px; vertical-align: middle; }
 .dsR148 /*agl rulekind: base;*/ { width: auto; height: 10px; vertical-align: middle; }
-#panel{position:absolute;width:100%;min-height:100%;left:-4000px;top:0px;background-color:#000000;z-index:4000;opacity:.8;overflow:auto}
+
 --></style>
 	</head>
 
@@ -332,8 +333,12 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 					$("#panel").css("left","-4000px");
 					//$("#"+msg.drive).remove();
 				}
+				if(invlaid){
+					$("#panel").css("left","-4000px");
+				}
 			}
 			
+			//CUSTOM METHOD
 			function userLimbo()
 			{
 				//alert(formId);
@@ -341,7 +346,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				if(conf){
 					$.api('user_delete_form','userLimbo');
 				} else{
-					$.api('user_delete_form','deleteUser');
+					$.api('user_delete_form','deleteUser',{confirmAction:true,confirmText:'WARNING:Deleting this user will delete all the related drives!!'});
 				}
 			}
 		</script>

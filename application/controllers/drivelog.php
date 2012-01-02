@@ -6,18 +6,24 @@ class Drivelog extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
+		
+		//IMPORT MODEL
 		$this->load->model('Drivelog_model','drivelog',true);
     }
     
-	
+	///MAIN CONTROLLER
 	public function index()
 	{
 		$data['brands'] = $this->drivelog->brands();
 		$data['users'] = $this->drivelog->users();
 		$data['capacity'] = $this->drivelog->capacity();
 		
+		//ADD YOUR VIEW HERE
 		$this->load->view('drivelog',$data);
 	}
+	
+	
+	################ PUBLIC API METHODS #######################
 	
 	public function addBrand()
 	{

@@ -38,7 +38,7 @@ DL = {
 		{
 			alert(options.invalidText);
 		}
-		
+	
 		//IF WE REQUIRE A CONFIRMATION BEFORE AN ACTION POP CONFIRM MESSAGE
 		if(options.confirmAction == true)
 		{
@@ -87,6 +87,12 @@ DL = {
   					}
 				});
 			}
+		} else{
+			///SEND BACK INVALID MESSAGE TO VIEW
+			if(options.onComplete)
+  			{
+  				onComplete({invalid:true});
+  			}
 		}
 	}
 }
