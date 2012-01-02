@@ -70,6 +70,7 @@ DL = {
     			}
 			});
 		
+			alert(options.apiUrl);
 			if(method)
 			{
 				//HANDLE AJAX CALL
