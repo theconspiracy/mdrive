@@ -134,7 +134,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form','deleteUser',{customMethod:userLimbo()});"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete" onClick="javascript:$.api('user_delete_form',false,{customMethod:userLimbo()});"/></td>
 											</tr>
 										</table>
 										</form>
@@ -334,13 +334,14 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				}
 			}
 			
-			function userLimbo(formId,method)
+			function userLimbo()
 			{
-				var conf = confirm('Would you lioke this user\'s drives to go into limbo?');
+				//alert(formId);
+				var conf = confirm('Would you like this user\'s drives to go into limbo?');
 				if(conf){
-					$.api(formId,'userLimbo');
+					$.api('user_delete_form','userLimbo');
 				} else{
-					$.api(formId,'deleteUser');
+					$.api('user_delete_form','deleteUser');
 				}
 			}
 		</script>

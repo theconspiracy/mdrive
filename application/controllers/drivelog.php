@@ -50,6 +50,7 @@ class Drivelog extends CI_Controller {
 	
 	public function userLimbo()
 	{
+		//echo 'USER LIMBO';
 		$data = $_POST;
 		$this->drivelog->userLimbo($data['user_id']);
 		echo '{"method":"users"}';

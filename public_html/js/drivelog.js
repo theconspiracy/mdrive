@@ -7,12 +7,15 @@ DL = {
 		var defaults = {
 			confirmAction:false,
 			confirmText:'You Sure',
+			invalidText:'You must complete all form fields',
 			requireAllFields:false,
 			validateFields:[],
-			customMethod:false,
-			apiUrl:"/drivelog"
+			apiUrl:"/drivelog",
+			onBegin:true,
+			onComplete:true
 		};
 		
+		//EXTEND DEFAULTS
 		var options = $.extend(defaults,params);
 		
 		
@@ -30,18 +33,13 @@ DL = {
 			});
 		}
 		
-		
+		///IF THE FORM IS nOT VALID POP A MESSAGE
 		if(!valid)
 		{
-			alert('You must complete all form fields');
+			alert(options.invalidText);
 		}
 		
-		if(options.customMethod)
-		{
-			options.customMethod.call(formId,method);
-			valid = false;
-		}
-		
+		//IF WE REQUIRE A CONFIRMATION BEFORE AN ACTION POP CONFIRM MESSAGE
 		if(options.confirmAction == true)
 		{
 			conf = confirm(options.confirmText);	
@@ -49,10 +47,16 @@ DL = {
 			conf = true;
 		}
 		
+		
+		//ONLY CONTINUE IF ACTION IS VALID AND CONFIRMED
 		if(conf && valid)
 		{
-			//CALLBACK TO VIEW
-			onBegin();
+			//CALLBACK TO VIEW - BEGIN ACTION
+			if(options.onBegin)
+			{
+				onBegin();
+			}
+			
 		
 			//store serialized data
 			var theData = $("#"+formId).serialize();
@@ -66,17 +70,23 @@ DL = {
     			}
 			});
 		
-			//HANDLE AJAX CALL
-			$.ajax({
-  				url: options.apiUrl+'/'+method,
-  				data: theData,
-  				dataType:"json",
-  				type:"POST",
-  				success: function(msg){
-  					//callback send msg/data
-  					onComplete(msg);
-  				}
-			});
+			if(method)
+			{
+				//HANDLE AJAX CALL
+				$.ajax({
+  					url: options.apiUrl+'/'+method,
+  					data: theData,
+  					dataType:"json",
+  					type:"POST",
+  					success: function(msg){
+  						//onComplete callback, default is on
+  						if(options.onComplete)
+  						{
+  							onComplete(msg);
+  						}
+  					}
+				});
+			}
 		}
 	}
 }

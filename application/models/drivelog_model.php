@@ -64,9 +64,10 @@ class Drivelog_model extends CI_Model {
 	
 	public function userLimbo($id)
 	{
-		$SQL = 'UPDATE users '
+		$SQL = 'UPDATE drives '
 		.' SET user_id=\'14\' '
-		.' WHERE id=\''.$id.'\' ';
+		.' WHERE user_id=\''.$id.'\' ';
+		                                                     
 		
 		$query = $this->db->query($SQL);
 	}
@@ -106,6 +107,7 @@ class Drivelog_model extends CI_Model {
 		$SQL = 'SELECT * '
 		.' FROM drives '
 		.' WHERE contents LIKE \'%'.$searchTerm.'%\' '
+		.' || name LIKE \'%'.$searchTerm.'%\' '
 		.' || jobs LIKE \'%'.$searchTerm.'%\' ';
 		
 		$query = $this->db->query($SQL);
