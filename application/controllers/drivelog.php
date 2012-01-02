@@ -169,7 +169,7 @@ class Drivelog extends CI_Controller {
 									<td class="dsR121"><input class="dsR122" type="text" name="jobs" value="'.$value->jobs.'" size="24" /></td>
 									<td class="dsR20" class="brands">
 			
-										<select name="brand_id" size="1">';
+										<select name="brand_id" size="1"><option value="">Choose</option>';
 				
 				$brands = $this->drivelog->brands();	
 				
@@ -202,7 +202,7 @@ class Drivelog extends CI_Controller {
 				
 				$template .= '						</select></td>
 									<td class="dsR28"><input class="dsR77" type="text" name="free_space" value="'.$value->free_space.'" size="8" maxlength="8" /></td>
-									<td class="dsR28"><select name="user_id" size="1" class="users">';
+									<td class="dsR28"><select name="user_id" size="1" class="users"><option value="">Choose</option>';
 			
 				$users = $this->drivelog->users();	
 				
@@ -278,10 +278,10 @@ class Drivelog extends CI_Controller {
 		$html .= '<option value="choose">Choose</option>';
 		foreach($users as $key =>$value)
 		{
-			if($value->name != 'limbo')
-			{
+			//if($value->name != 'limbo')
+			//{
 				$html .= '<option value="'.$value->id.'">'.$value->name.'</option>';	
-			}
+			//}
 		} 
 		
 		$html .= '<select>';
