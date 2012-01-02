@@ -6,8 +6,8 @@ DL = {
 		
 		var defaults = {
 			confirmAction:false,
-			confirmText:'You Sure',
-			invalidText:'You must complete all form fields',
+			confirmText:'Are you Sure?',
+			invalidText:'You must complete all form fields.',
 			requireAllFields:false,
 			validateFields:[],
 			apiUrl:"/drivelog",

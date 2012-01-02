@@ -14,24 +14,29 @@ class Drivelog_model extends CI_Model {
 	
 	public function brands()
 	{
+		$this->db->order_by("name", "asc"); 
 		$query = $this->db->get('brands');
+		
 		return $query->result();
 	}
 	
 	public function users()
 	{
-		$query = $this->db->get('users');
+		$sql = 'SELECT * FROM users where name!=\'Limbo\' ORDER BY name ASC'; 
+		$query = $this->db->query($sql);
 		return $query->result();
 	}
 	
 	public function capacity()
 	{
+		$this->db->order_by("amount", "asc"); 
 		$query = $this->db->get('capacity');
 		return $query->result();
 	}
 	
 	public function drives()
 	{
+		$this->db->order_by("name", "asc"); 
 		$query = $this->db->get('drives');
 		return $query->result();
 	}

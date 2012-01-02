@@ -103,7 +103,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 													</select>
 													</div>
 													</td>
-												<td class="dsR109"><input type="button" name="delete" value="Delete"  onClick="javascript:$.api('capacity_delete_form','deleteCapacity',{cofirmAction:true});"/></td>
+												<td class="dsR109"><input type="button" name="delete" value="Delete"  onClick="javascript:$.api('capacity_delete_form','deleteCapacity',{confirmAction:true});"/></td>
 											</tr>
 										</table>
 										</form>
@@ -238,7 +238,6 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 									</div>
 									</td>
 								<td class="dsR28"><select name="free" size="1">
-										<option value="choose">Choose</option>
 										<option value="1">Yes</option>
 										<option selected="selected" value="0">No</option>
 									</select></td>
@@ -348,6 +347,14 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 					$.api('user_delete_form','deleteUser',{confirmAction:true,confirmText:'WARNING:Deleting this user will delete all the related drives!!'});
 				}
 			}
+			
+			function stopRKey(evt) {
+	var evt  = (evt) ? evt : ((event) ? event : null);
+	var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+	if ((evt.keyCode == 13) && (node.type=="text")) { return false; }
+}
+document.onkeypress = stopRKey;
+			
 		//});
 		</script>
 	</body>

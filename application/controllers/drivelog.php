@@ -34,7 +34,7 @@ class Drivelog extends CI_Controller {
 	
 	public function deleteBrand()
 	{
-		print_r($_POST);
+		//print_r($_POST);
 		$data = $_POST;
 		$this->drivelog->deleteBrand($data['brand_id']);
 		echo '{"method":"brands"}';
@@ -233,7 +233,7 @@ class Drivelog extends CI_Controller {
 										</select></td>
 										
 									<td class="dsR28"><input type="button" name="Update" value="Update" onClick="javascript:$.api(\'drive_'.$value->id.'\',\'modifyDrive\');"/></td>
-									<td class="dsR28"><input type="button" name="submitButtonName" value="Delete"  onClick="javascript:$.api(\'drive_'.$value->id.'\',\'deleteDrive\',{cofirmAction:true});"/></td>
+									<td class="dsR28"><input type="button" name="submitButtonName" value="Delete"  onClick="javascript:$.api(\'drive_'.$value->id.'\',\'deleteDrive\',{confirmAction:true});"/></td>
 								</tr><input type="hidden" name="id" value="'.$value->id.'"></form>';
 			}
 	
@@ -261,9 +261,7 @@ class Drivelog extends CI_Controller {
 		
 		$capacity =  $this->drivelog->capacity();
 		$html = '<select name="capacity_id" size="1">';
-		$html .= '<option value="choose">Choose</option>';
 		foreach($capacity as $key =>$value)
-		
 		{
 			$html .= '<option value="'.$value->id.'">'.$value->amount.'</option>';
 		} 
@@ -287,11 +285,6 @@ class Drivelog extends CI_Controller {
 		
 		$html .= '<select>';
 		echo $html;
-	}
-	
-	function test(){
-		
-		echo 1;
 	}
 }
 
