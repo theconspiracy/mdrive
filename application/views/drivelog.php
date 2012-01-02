@@ -277,7 +277,9 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 		<p></p>
 		<script>
 
-			
+			//jQuery(document).ready(function($) {
+ 
+
 			//CALL BACK METHODS DL API
 			function onBegin()
 			{
@@ -346,6 +348,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 					$.api('user_delete_form','deleteUser',{confirmAction:true,confirmText:'WARNING:Deleting this user will delete all the related drives!!'});
 				}
 			}
+		//});
 		</script>
 	</body>
 

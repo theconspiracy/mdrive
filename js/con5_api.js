@@ -70,7 +70,6 @@ DL = {
     			}
 			});
 		
-			alert(options.apiUrl);
 			if(method)
 			{
 				//HANDLE AJAX CALL
@@ -97,8 +96,9 @@ DL = {
 		}
 	}
 }
-
+jQuery(document).ready(function($) {
 //EXTEND JQUERY WITH DL OBJECT
 $.extend(DL);
+});
 
 
