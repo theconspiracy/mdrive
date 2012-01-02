@@ -288,6 +288,11 @@ class Drivelog extends CI_Controller {
 		$html .= '<select>';
 		echo $html;
 	}
+	
+	function test(){
+		
+		echo 1;
+	}
 }
 
 /* End of file welcome.php */
