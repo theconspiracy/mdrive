@@ -268,6 +268,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				<tr>
 					<td class="dsR28">
 						<div align="center" id="search_results">
+							<?php echo $drives;	?>
 						</div>
 					</td>
 				</tr>

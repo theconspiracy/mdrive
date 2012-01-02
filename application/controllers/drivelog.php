@@ -17,7 +17,7 @@ class Drivelog extends CI_Controller {
 		$data['brands'] = $this->drivelog->brands();
 		$data['users'] = $this->drivelog->users();
 		$data['capacity'] = $this->drivelog->capacity();
-		
+		$data['drives'] = $this->formatSearchResults($this->drivelog->drives());
 		//ADD YOUR VIEW HERE
 		$this->load->view('drivelog',$data);
 	}
