@@ -34,6 +34,7 @@ class Drivelog extends CI_Controller {
 	
 	public function deleteBrand()
 	{
+		print_r($_POST);
 		$data = $_POST;
 		$this->drivelog->deleteBrand($data['brand_id']);
 		echo '{"method":"brands"}';
