@@ -85,7 +85,7 @@ class Drivelog extends CI_Controller {
 		$data = $_POST;
 		unset($data['add']);
 		$this->drivelog->addDrive($data);
-		echo '{"method":"brands"}';
+		echo '{"method":"add_drive"}';
 	}
 	
 	public function modifyDrive()
@@ -246,7 +246,7 @@ class Drivelog extends CI_Controller {
 		
 		$brands =  $this->drivelog->brands();
 		$html = '<select name="brand_id" size="1">';
-		$html .= '<option value="choose">Choose</option>';
+		$html .= '<option value="">Choose</option>';
 		foreach($brands as $key =>$value)
 		
 		{
@@ -274,7 +274,7 @@ class Drivelog extends CI_Controller {
 		
 		$users =  $this->drivelog->users();
 		$html = '<select name="user_id" size="1">';
-		$html .= '<option value="choose">Choose</option>';
+		$html .= '<option value="">Choose</option>';
 		foreach($users as $key =>$value)
 		{
 			//if($value->name != 'limbo')

@@ -209,7 +209,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 								<td class="dsR20">
 									<div class="brands">
 									<select name="brand_id" size="1">
-										<option value="choose">Choose</option>
+										<option value="">Choose</option>
 										<?php foreach($brands as $key =>$value): ?>
 											<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
 										<?php endforeach; ?>
@@ -219,7 +219,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 								<td class="dsR28">
 									<div class="capacity">
 									<select class="dsR54" name="capacity_id" size="1">
-										<option value="choose">Choose</option>
+										<option value="">Choose</option>
 										<?php foreach($capacity as $key =>$value): ?>
 											<option value="<?php echo $value->id;?>"><?php echo $value->amount;?></option>
 										<?php endforeach; ?>
@@ -230,7 +230,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 								<td class="dsR28">
 									<div class="users">
 									<select name="user_id" size="1">
-										<option value="choose">Choose</option>
+										<option value="">Choose</option>
 										<?php foreach($users as $key =>$value): if($value->name!='limbo'): ?>
 											<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
 										<?php endif; endforeach; ?>
@@ -327,6 +327,16 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 					$("#panel").css("left","-4000px");
 					$("#"+msg.drive).remove();
 				}
+				if(method=='add_drive')
+				{
+					$.post('/drivelog/search',{search_term:""},function(data){
+						//$("")
+						$("#panel").css("left","-4000px");
+						var processedData = $.parseJSON(data);
+						$("#search_results").html(processedData.results[0]);
+						//$(".brands").html(data);
+					});
+				}
 				if(method=='drive_modified')
 				{
 					$("#panel").css("left","-4000px");
@@ -349,12 +359,14 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				}
 			}
 			
-			function stopRKey(evt) {
-	var evt  = (evt) ? evt : ((event) ? event : null);
-	var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-	if ((evt.keyCode == 13) && (node.type=="text")) { return false; }
-}
-document.onkeypress = stopRKey;
+			//DISABLE RETURN KEY
+			function stopRKey(evt) 
+			{
+				var evt  = (evt) ? evt : ((event) ? event : null);
+				var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+				if ((evt.keyCode == 13) && (node.type=="text")) { return false; }
+			}
+			document.onkeypress = stopRKey;
 			
 		//});
 		</script>
