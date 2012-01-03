@@ -3,7 +3,6 @@ DL = {
 	api:function(formId,method,params)
 	{
 		var form = $("#"+formId);
-		
 		var defaults = {
 			confirmAction:false,
 			confirmText:'Are you sure?',

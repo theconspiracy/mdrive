@@ -262,7 +262,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				</tr>
 				<tr>
 					<td class="dsR147">
-						<div align="center"><form id="search_form" method="post"><input class="dsR10" type="text" name="search_term" size="100" /> <input type="button" name="submitButtonName" value="Search"  onClick="javascript:$.api('search_form','search');" /></form></div>
+						<div align="center"><form id="search_form" method="post"><input class="dsR10" type="text" id="search_term" name="search_term" size="100" /> <input type="button" name="submitButtonName" value="Search"  onClick="javascript:setSearchTerm();$.api('search_form','search');" /></form></div>
 					</td>
 				</tr>
 				<tr>
@@ -279,7 +279,12 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 
 			//jQuery(document).ready(function($) {
  
-
+			var searchTerm = "";
+			function setSearchTerm()
+			{
+				searchTerm = $("#search_term").val();
+			}
+			
 			//CALL BACK METHODS DL API
 			function onBegin()
 			{
@@ -309,8 +314,15 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 				{
 					$.post('/drivelog/'+method,function(data){
 						//$("")
-						$("#panel").css("left","-4000px");
+						//$("#panel").css("left","-4000px");
 						$(".users").html(data);
+						$.post('/drivelog/search',{search_term:searchTerm},function(data){
+						//$("")
+							$("#panel").css("left","-4000px");
+							var processedData = $.parseJSON(data);
+							$("#search_results").html(processedData.results[0]);
+						//$(".brands").html(data);
+						});
 					});
 				}
 				

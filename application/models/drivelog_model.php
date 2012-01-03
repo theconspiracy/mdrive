@@ -27,6 +27,13 @@ class Drivelog_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function allUsers()
+	{
+		$sql = 'SELECT * FROM users  ORDER BY name ASC'; 
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+	
 	public function capacity()
 	{
 		$this->db->order_by("amount", "asc"); 

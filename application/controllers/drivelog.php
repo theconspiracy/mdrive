@@ -203,9 +203,9 @@ class Drivelog extends CI_Controller {
 				
 				$template .= '						</select></td>
 									<td class="dsR28"><input class="dsR77" type="text" name="free_space" value="'.$value->free_space.'" size="8" maxlength="8" /></td>
-									<td class="dsR28"><select name="user_id" size="1" class="users"><option value="">Choose</option>';
+									<td class="dsR28"><select name="user_id" size="1" class="allusers"><option value="">Choose</option>';
 			
-				$users = $this->drivelog->users();	
+				$users = $this->drivelog->allUsers();	
 				
 				foreach($users  as $k =>$val)
 				{
@@ -276,6 +276,23 @@ class Drivelog extends CI_Controller {
 	public function users(){
 		
 		$users =  $this->drivelog->users();
+		$html = '<select name="user_id" size="1">';
+		$html .= '<option value="">Choose</option>';
+		foreach($users as $key =>$value)
+		{
+			//if($value->name != 'limbo')
+			//{
+				$html .= '<option value="'.$value->id.'">'.$value->name.'</option>';	
+			//}
+		} 
+		
+		$html .= '<select>';
+		echo $html;
+	}
+	
+	public function allUsers(){
+		
+		$users =  $this->drivelog->allUsers();
 		$html = '<select name="user_id" size="1">';
 		$html .= '<option value="">Choose</option>';
 		foreach($users as $key =>$value)
