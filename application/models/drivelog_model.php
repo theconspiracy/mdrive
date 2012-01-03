@@ -82,6 +82,9 @@ class Drivelog_model extends CI_Model {
 		                                                     
 		
 		$query = $this->db->query($SQL);
+		
+		$this->db->where('id', $id);
+		$this->db->delete('users'); 
 	}
 	
 	

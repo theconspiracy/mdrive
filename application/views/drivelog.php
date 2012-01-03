@@ -326,6 +326,8 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 					});
 				}
 				
+				
+				
 				if(method=='search')
 				{
 					if(msg.results.length >0)
