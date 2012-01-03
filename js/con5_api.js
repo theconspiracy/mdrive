@@ -25,9 +25,8 @@ DL = {
 		{
 			$(':input', form).each(function(index) 
 			{
-    			if($(this).val() == '' )
+    			if($(this).val() == '')
     			{
-    				//alert($(this).attr('name'));
     				valid = false;
     			}
 			});
@@ -64,7 +63,7 @@ DL = {
 			//clear form
 			$(':input', form).each(function(index) 
 			{
-    			if($(this).attr('type') != 'button' )
+    			if($(this).attr('type') != 'button'  && $(this).attr('name')!='free')
     			{
     				$(this).val('');
     			}
