@@ -1,0 +1,17 @@
+
+
+INSTALL INSTRUCTIONS:
+This Application is designed to live in it's own domain or sub domain. Currently it can be dropped into the public folder as is. 
+
+For heightened security add js/ media/ css/ .htaccess and index.php to public directory. Keep all other directories out of the way of port 80. If you choose the more secure installation. Please edit lines: 29 & 47 in index.php to appropriate paths.
+
+the SQL directory contains a single MySQL structure that will need to be installed
+
+application/config/database.php will need to be configured to the MySQL credentials of your server.
+
+
+This application was built using 
+
+Codeigniter http://codeigniter.com/user_guide/database/index.html
+jQuery http://jquery.com/
+

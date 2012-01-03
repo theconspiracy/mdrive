@@ -239,7 +239,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 									</td>
 								<td class="dsR28"><select name="free" size="1">
 										<option value="1">Yes</option>
-										<option selected="selected" value="0">No</option>
+										<option selected value="0">No</option>
 									</select></td>
 								<td class="dsR28"><input type="button" name="add" value="Add" onClick="javascript:$.api('drive_form','addDrive',{requireAllFields:true});"/></td>
 								<td class="dsR28"></td>
@@ -351,7 +351,7 @@ body { background-color: #fff; background-image: url(media/background.jpg); marg
 			function userLimbo()
 			{
 				//alert(formId);
-				var conf = confirm('Would you like this user\'s drives to go into limbo?');
+				var conf = confirm('Would you like this user\'s drives to go into Limbo?');
 				if(conf){
 					$.api('user_delete_form','userLimbo');
 				} else{

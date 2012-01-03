@@ -218,18 +218,21 @@ class Drivelog extends CI_Controller {
 					$template .= '<option '.$selected.' value="'.$val->id.'">'.$val->name.'</option>';
 				}				
 								
-				$free = '';
+				$free_yes = '';
+				$free_no = '';
 				
 				if($value->free == 1)
 				{
-					$free = ' selected ';
+					$free_yes = ' selected ';
+				} else{
+					$free_no = ' selected ';
 				}
 				
 							
 				$template .= '	</select></td>
 									<td class="dsR28"><select name="free" size="1">
-											<option '.$free.' value="Yes">Yes</option>
-											<option '.$free.' value="No">No</option>
+											<option '.$free_yes.' value="Yes">Yes</option>
+											<option '.$free_no.' value="No">No</option>
 										</select></td>
 										
 									<td class="dsR28"><input type="button" name="Update" value="Update" onClick="javascript:$.api(\'drive_'.$value->id.'\',\'modifyDrive\');"/></td>

@@ -6,7 +6,7 @@ DL = {
 		
 		var defaults = {
 			confirmAction:false,
-			confirmText:'Are you Sure?',
+			confirmText:'Are you sure?',
 			invalidText:'You must complete all form fields.',
 			requireAllFields:false,
 			validateFields:[],
