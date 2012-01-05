@@ -119,11 +119,26 @@ class Drivelog_model extends CI_Model {
 	
 	public function search($searchTerm)
 	{
-		$SQL = 'SELECT * '
-		.' FROM drives '
-		.' WHERE contents LIKE \'%'.$searchTerm.'%\' '
-		.' || name LIKE \'%'.$searchTerm.'%\' '
-		.' || jobs LIKE \'%'.$searchTerm.'%\' ';
+		
+		
+	$SQL = 'SELECT '
+	.' DISTINCT d.id, '
+	.' d.name, '
+	.' d.contents, '
+	.' d.jobs, '
+	.' d.brand_id, '
+	.' d.user_id, '
+	.' d.capacity_id, '
+	.' d.free, '
+	.' d.free_space '
+	
+	.' FROM drives as d, users as u, brands as b '
+	
+	.' WHERE d.contents LIKE \'%'.$searchTerm.'%\' '
+	.' || d.name LIKE \'%'.$searchTerm.'%\' '
+	.' || d.jobs LIKE \'%'.$searchTerm.'%\' '
+	.' || (d.brand_id=b.id && b.name LIKE \'%'.$searchTerm.'%\' )'
+	.' || (d.user_id=u.id && u.name LIKE \'%'.$searchTerm.'%\' ) ';
 		
 		$query = $this->db->query($SQL);
 		return $query->result();
